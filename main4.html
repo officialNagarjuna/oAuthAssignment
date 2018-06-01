@@ -1,0 +1,102 @@
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="64276955309-qk16s8p65r45lis17b13b53pfd8bso4m.apps.googleusercontent.com">
+<script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous">
+</script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<style>
+#in1{
+	margin-left: 50%;
+	margin-top: 0%
+}
+#in2{
+	margin-left: 50%;
+	margin-top: 30%;
+}
+#in3{
+	margin-left: 50%;
+	margin-top: 0%;
+}
+fb
+{
+margin-left: 50%;	
+}
+
+</style>
+</head>
+<body>
+<div id="in2" >
+<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" id="in3" charset="utf-8"></script>
+</div>
+
+ <script>
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '639127406428636',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+ function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+
+     if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+      testAPI();
+    } else {
+      // The person is not logged into your app or we are unable to tell.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    }
+  }
+
+function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+}
+
+ FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+
+ function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        'Thanks for logging in, ' + response.name + '!';
+    });
+  }
+
+</script>
+<div id="in3">
+<fb:login-button 
+  scope="public_profile,email" data-width="300" onlogin="checkLoginState();">
+</fb:login-button></div>
+<div id="in1" class="g-signin2" data-width="300" data-onsuccess="onSignIn"/><div>
+</body>
+  </html>
